@@ -65,7 +65,7 @@ services:
   # Kovaları bir kez oluşturur ve çıkar: ham · islenmis · tablolar
   s3-kur:
     build: ./araclar
-    image: bsm461-araclar:1
+    image: bsm461-araclar:2
     container_name: bsm461-s3-kur
     command: ["python", "/kit/araclar/kova_kur.py"]
     volumes:
@@ -102,7 +102,7 @@ services:
   # ── Python araçları: üretici, doğrulama, arama örneği ─────────────────────
   araclar:
     build: ./araclar
-    image: bsm461-araclar:1
+    image: bsm461-araclar:2
     container_name: bsm461-araclar
     command: ["sleep", "infinity"]
     working_dir: /kit

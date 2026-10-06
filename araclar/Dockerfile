@@ -10,3 +10,6 @@ RUN pip install --no-cache-dir \
       elasticsearch==8.15.1 \
       pymongo==4.10.1
 WORKDIR /kit
+# DuckDB'nin S3 eklentisini imaja göm: kapsayıcı yeniden oluşturulunca yeniden indirilmesin,
+# internet yokken de çalışsın (indirme ara sıra "Failed to read connection" ile düşüyordu).
+RUN python -c "import duckdb; duckdb.sql('INSTALL httpfs'); duckdb.sql('LOAD httpfs'); print('httpfs hazır')"

@@ -1,0 +1,11 @@
+{
+  "identities": [
+    {
+      "name": "ogrenci",
+      "credentials": [
+        { "accessKey": "bsm461", "secretKey": "bsm461-gizli" }
+      ],
+      "actions": ["Admin", "Read", "Write", "List", "Tagging"]
+    }
+  ]
+}

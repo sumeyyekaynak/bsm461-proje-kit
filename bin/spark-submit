@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# spark-submit'i sessizleştiren ince sarmalayıcı.
+# Kütüphane çözümleme (Ivy) ve JVM ayar iletilerini gizler; hata iletileri ve işin kendi çıktısı aynen görünür.
+# İlk çalıştırmadaki "downloading …" satırları da görünür kalır (indirme sürerken iş donmuş gibi görünmesin).
+# Hiç süzülmemiş çıktı için: /opt/spark/bin/spark-submit
+set -o pipefail
+exec /opt/spark/bin/spark-submit "$@" > >(grep --line-buffered -v "^:: loading settings" ) 2> >(grep --line-buffered -v -E \
+  '^(Picked up JAVA_TOOL_OPTIONS|:: |Ivy Default Cache|The jars for the packages|	confs: |	found |	[-|]|	\||	---|	[a-z0-9_.-]+#[^ ]+ from |	0 artifacts copied|	[0-9]+ artifacts copied)|added as a dependency$|^	:: modules in use:' >&2)
